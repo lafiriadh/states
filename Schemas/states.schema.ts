@@ -7,4 +7,4 @@ export class States {
    roleNumber: number;
    
 }
-export const StudentSchema = SchemaFactory.createForClass(States);
+export const StatesSchema = SchemaFactory.createForClass(States);
