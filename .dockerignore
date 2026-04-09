@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Build output
+dist
+coverage
+
+# Sensitive information
+.env
+.env.production
+.env.development
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+
+# Git
+.git
+.gitignore
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# NestJS / TypeScript leftovers
+.next
+.nuxt
+.cache
