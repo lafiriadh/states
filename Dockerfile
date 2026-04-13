@@ -1,25 +1,15 @@
-# Stage 1: Build
-FROM node:24-alpine AS builder
-
-WORKDIR /app
+FROM node:24-alpine
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN npm install
 
+# Copy everything (except what's in .dockerignore)
 COPY . .
+
+# IMPORTANT: You must build inside the container because 
+# .dockerignore is blocking your local 'dist' folder
 RUN npm run build
 
-# Stage 2: Run
-FROM node:24-alpine
-
-WORKDIR /app
-
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/dist ./dist
-
-# Install production dependencies only
-RUN npm install --omit=dev
-
 EXPOSE 3000
-
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
